@@ -14,6 +14,6 @@ RUN apk --update add --no-cache freetype libpng libjpeg-turbo freetype-dev libpn
 && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev  \
 
 && curl -sS https://getcomposer.org/installer | php \
-    && mv composer.phar /usr/local/bin/composer.phar \
-    && composer.phar global require --no-progress "fxp/composer-asset-plugin:^1.2.0" \
-    && composer.phar global require --no-progress "squizlabs/php_codesniffer:^2.8.0"
+    && mv composer.phar /usr/local/bin/composer \
+    && composer global require --no-progress "fxp/composer-asset-plugin:^1.2.0" \
+    && composer global require --no-progress "squizlabs/php_codesniffer:^2.8.0"
