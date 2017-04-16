@@ -1,6 +1,6 @@
 FROM php:7.1-fpm-alpine
 
-RUN apk --update add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
+RUN apk --update add --no-cache git bash openssh-client freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
 
 && docker-php-ext-configure gd \
     --with-gd \
