@@ -8,7 +8,13 @@ RUN apk --update add --no-cache git bash docker openssh-client freetype libpng l
     --with-png-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ \
 
-&& docker-php-ext-install pdo_mysql \
+ && docker-php-ext-install intl \
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-install mcrypt \
+    && docker-php-ext-install opcache \
+    && docker-php-ext-install zip \
+    && pecl install apcu-5.1.3 && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini \
 
 && docker-php-ext-install gd  \
 && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev  \
