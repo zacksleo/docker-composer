@@ -8,7 +8,6 @@ RUN apk --update add --no-cache git bash docker openssh-client freetype libpng l
     --with-png-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ \
 
- && docker-php-ext-install intl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mbstring \
     && docker-php-ext-install mcrypt \
