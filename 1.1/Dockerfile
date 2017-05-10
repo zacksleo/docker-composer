@@ -19,4 +19,4 @@ RUN apk --update add --no-cache git bash docker openssh-client freetype libpng l
     && mv composer.phar /usr/local/bin/composer \
     && composer global require --no-progress "fxp/composer-asset-plugin:^1.0" \
     && composer global require --no-progress "squizlabs/php_codesniffer:^2.0" \
-    && composer gloabl require --no-progress "codeception/codeception:^2.2"
+    && composer global require --no-progress "codeception/codeception:^2.2"
