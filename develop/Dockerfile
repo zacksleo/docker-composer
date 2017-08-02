@@ -1,8 +1,7 @@
 FROM php:7.1-fpm-alpine
-
 RUN apk update \
     && apk update && apk add  --no-cache git mysql-client curl libmcrypt libmcrypt-dev openssh-client rsync icu-dev \
-    libxml2-dev freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
+    libxml2-dev freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf supervisor \
     && docker-php-source extract \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
