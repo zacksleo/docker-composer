@@ -1,9 +1,9 @@
-apk add autoconf build-base linux-headers libaio-dev pcre-dev openssl-dev
+apk add git autoconf build-base linux-headers libaio-dev pcre-dev openssl-dev
 ln -s /usr/bin/php-config7 /usr/bin/php-config
 ln -s /usr/bin/phpize7 /usr/bin/phpize
-cd /var/www/html/services/swoole/
-git clone https://gitee.com/swoole/swoole.git
-cd /var/www/html/services/swoole/swoole
+cd /root/
+git clone git@github.com:swoole/swoole-src.git
+cd /root/swoole
 phpize
 ./configure --enable-openssl
 make && make install
