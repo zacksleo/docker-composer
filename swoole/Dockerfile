@@ -1,5 +1,5 @@
 FROM php:7.1-fpm-alpine
-#RUN echo "http://mirrors.aliyun.com/alpine/v3.4/main/" > /etc/apk/repositories
+# RUN echo "http://mirrors.aliyun.com/alpine/v3.4/main/" > /etc/apk/repositories
 RUN apk update \
     && apk update && apk add --no-cache git libmcrypt libmcrypt-dev \
     freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
@@ -14,3 +14,6 @@ RUN apk update \
 
  && docker-php-ext-install gd  \
  && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+
+COPY build_swoole.sh /root/
+RUN sh /root/build_swoole.sh
