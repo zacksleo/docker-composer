@@ -15,5 +15,7 @@ RUN apk update \
  && docker-php-ext-install gd  \
  && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
 
-COPY build_swoole.sh /root/
-RUN sh /root/build_swoole.sh
+RUN pecl install swoole && docker-php-ext-enable swoole
+
+#COPY build_swoole.sh /root/
+#RUN sh /root/build_swoole.sh
