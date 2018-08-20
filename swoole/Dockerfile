@@ -11,5 +11,4 @@ RUN pecl download swoole && mv swoole-* swoole.tgz && gzip -d < swoole.tgz | tar
 && rm -f swoole.tgz && rm -rf swoole-*
 
 RUN docker-php-ext-enable swoole
-RUN apk del --no-cache openssl-dev
 RUN php --ri swoole
