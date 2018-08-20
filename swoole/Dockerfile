@@ -1,21 +1,15 @@
-FROM php:7.1-fpm-alpine
+FROM zacksleo/docker-composer:alpine
 # RUN echo "http://mirrors.aliyun.com/alpine/v3.4/main/" > /etc/apk/repositories
-RUN apk update \
-    && apk update && apk add --no-cache git libmcrypt libmcrypt-dev \
-    freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev \
-    g++ make autoconf supervisor \
-    && docker-php-ext-install mcrypt pdo_mysql \
+RUN apk update && apk add --no-cache openssl-dev
 
- && docker-php-ext-configure gd \
-    --with-gd \
-    --with-freetype-dir=/usr/include/ \
-    --with-png-dir=/usr/include/ \
-    --with-jpeg-dir=/usr/include/ \
+#RUN pecl install swoole && docker-php-ext-enable swoole
 
- && docker-php-ext-install gd  \
- && apk del --no-cache freetype-dev libpng-dev libjpeg-turbo-dev
+RUN pecl download swoole && mv swoole-* swoole.tgz && gzip -d < swoole.tgz | tar -xvf - \
+&& cd swoole-* && phpize \
+&& ./configure --enable-openssl \
+&& make && make install \
+&& rm -f swoole.tgz && rm -rf swoole-*
 
-RUN pecl install swoole && docker-php-ext-enable swoole
-
-#COPY build_swoole.sh /root/
-#RUN sh /root/build_swoole.sh
+RUN docker-php-ext-enable swoole
+RUN apk del --no-cache openssl-dev
+RUN php --ri swoole

@@ -8,6 +8,7 @@ cd /root/swoole-src
 phpize
 ./configure --enable-openssl
 make && make install
+docker-php-ext-enable swoole
 apk del --no-cache php-dev
 apk del --no-cache git
 apk del --no-cache build-base
