@@ -8,7 +8,8 @@ RUN pecl download swoole && mv swoole-* swoole.tgz && gzip -d < swoole.tgz | tar
 && cd swoole-* && phpize \
 && ./configure --enable-openssl \
 && make && make install \
-&& rm -f swoole.tgz && rm -rf swoole-*
+&& cd .. rm -f swoole.tgz && rm -rf swoole-* \
+&& ls
 
 RUN docker-php-ext-enable swoole
 RUN php --ri swoole
