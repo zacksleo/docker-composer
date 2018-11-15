@@ -1,2 +1,2 @@
-FROM zacksleo/docker-composer:mongodb
+FROM zacksleo/docker-composer:alpine
 RUN pecl install mongodb
