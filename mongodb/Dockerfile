@@ -1,2 +1,2 @@
 FROM zacksleo/docker-composer:alpine
-RUN pecl install mongodb && docker-php-ext-enable mongodb
+RUN apk add libressl-dev && pecl install mongodb && docker-php-ext-enable mongodb
