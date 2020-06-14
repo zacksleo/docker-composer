@@ -4,7 +4,7 @@ RUN apk update \
     && docker-php-ext-install pdo_mysql pcntl bcmath opcache \
     && docker-php-ext-enable pcntl bcmath opcache \
     && apk add --no-cache --virtual .build-deps libzip-dev \
-    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 # Install GD2
 RUN apk --update add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev  \
