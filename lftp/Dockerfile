@@ -1,7 +1,7 @@
 FROM php:7-fpm-alpine
 RUN apk update \
     && apk add --no-cache supervisor mysql-client zlib-dev lftp \
-    && docker-php-ext-install pdo_mysql mbstring pcntl bcmath opcache \
+    && docker-php-ext-install pdo_mysql pcntl bcmath opcache \
     && docker-php-ext-enable pcntl bcmath opcache \
     && apk add --no-cache --virtual .build-deps libzip-dev \
     && docker-php-ext-configure zip --with-libzip \
